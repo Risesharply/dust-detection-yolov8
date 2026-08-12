@@ -42,13 +42,8 @@ class Tracker:
 
         for track in self.tracks:
             # for each obj,  provide reference bbox  based on t-1  为空列表或refer bbox
-            print("track_id:",track.track_id )
-            print("track_GIoUs:",track.GIoUs)
-            print('------------------------------')
-            print("len:",len(track.GIoUs))
             refer = track.predict()
             self.reference.append(refer)
-        print('refer:', self.reference)
 
 
 
@@ -68,9 +63,6 @@ class Tracker:
         det_error = [0]*length
 
         matches, unmatched_tracks, unmatched_detections = giou_matching(self.reference, detections, self.sigma_giou)
-        print('match:',matches)
-        print('unmatch:', unmatched_tracks)
-        print('unmatch_det:',unmatched_detections )
         # Update track set.
         #匹配成功，添加det到track.location
         if matches != []:
@@ -88,7 +80,6 @@ class Tracker:
 
         self.tracks = [t for t in self.tracks if not t.is_deleted()]
 
-        print('error:',det_error)
         remove_indices = self.filter_detections(det_error,self.sigma_error)
         return remove_indices
 
@@ -97,9 +88,6 @@ class Tracker:
         key_frame = 0
         #matches=[(1,3,giou),..] 其他是[1,3,4,..]
         matches, unmatched_tracks, unmatched_detections = giou_matching(self.reference, detections, self.sigma_giou)
-        print('match:',matches)
-        print('unmatch:', unmatched_tracks)
-        print('unmatch_det:',unmatched_detections )
         # Update track set.
         #匹配成功，添加det到track.location
         if matches != []:
@@ -125,13 +113,9 @@ class Tracker:
             if len(track.GIoUs) == 0:
                 pass
             elif np.mean(track.GIoUs) > self.sigma_work:
-                    print(np.mean(track.GIoUs))
-                    print('*************')
                     workState = 0
                     result.append((track.track_id, workState,key))
             else:
-                print(np.mean(track.GIoUs))
-                print('_________________________')
                 workState = 1
                 if track.key_frame == 1:
                     key = 1
@@ -139,7 +123,6 @@ class Tracker:
                 result.append((track.track_id, workState,key))
 
         #返回轨迹id 轨迹作业情况
-        print('result:',result)
 
         return result
 

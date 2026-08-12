@@ -1,1 +1,0 @@
-"""Current web-service examples."""

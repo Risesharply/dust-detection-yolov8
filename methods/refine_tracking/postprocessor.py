@@ -38,7 +38,6 @@ class RefinePostprocessor:
         return refine_pred
 
     def postProcessing(self, detections):
-        print('dets:', detections)
         # update tracker ********************************************************************************************
         self.tracker.predict()  # predict based on t-1 info
 
@@ -50,7 +49,6 @@ class RefinePostprocessor:
 
 
     def clear_tracker(self):
-        print('tracker clear')
         self.tracker.clear()
 
 

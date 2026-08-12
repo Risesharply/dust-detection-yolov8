@@ -23,7 +23,6 @@ class If_Move:
                 loader_det.append(row[:4].tolist())
 
         # 使用GIoU_Tracker对loader进行运动轨迹更新
-        print('dets:', loader_det)
         # update tracker ********************************************************************************************
         self.tracker.predict()
         # 返回目前的轨迹数，及轨迹分类 作业or不作业 track_id, if_work
@@ -34,7 +33,6 @@ class If_Move:
 
 
     def clear_tracker(self):
-        print('tracker clear')
         self.tracker.clear()
 
 

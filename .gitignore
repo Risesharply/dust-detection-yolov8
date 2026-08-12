@@ -144,6 +144,8 @@ wandb/
 
 # Neural Network weights -----------------------------------------------------------------------------------------------
 weights/
+configs/*.local.yaml
+configs/*.local.yml
 *.weights
 *.pt
 *.pb

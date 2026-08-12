@@ -3,7 +3,7 @@
 import torch
 import torch.nn as nn
 
-from proxy_package.configs.backbones.efficientnet_v2 import EfficientNetV2
+from .legacy.backbones.efficientnet_v2 import EfficientNetV2
 
 
 class GlobalAveragePooling(nn.Module):

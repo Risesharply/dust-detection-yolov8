@@ -83,7 +83,6 @@ def giou_matching(track_boxes, detection_boxes, giou_threshold):
     # match
     #step1.确定matches
     # 找到每列的最大值及其索引
-    print(giou_matrix)
     a = np.array(giou_matrix)
 
     rows, cols = [], []
@@ -93,10 +92,6 @@ def giou_matching(track_boxes, detection_boxes, giou_threshold):
         max_values = np.max(giou_matrix, axis=0)
         max_indices = np.argmax(giou_matrix, axis=0)
         # 找到大于0.4的最大值的索引
-        print('_________________')
-        print(max_values)
-        print('#############')
-        print(max_indices)
         indices = np.where(max_values > giou_threshold)
 
         for index in indices[0]:
@@ -159,7 +154,6 @@ def v_giou_matching(track_boxes, detection_boxes, giou_threshold):
     # match
     #step1.确定matches
     # 找到每列的最大值及其索引
-    print(giou_matrix)
     a = np.array(giou_matrix)
 
     rows, cols = [], []
@@ -169,10 +163,6 @@ def v_giou_matching(track_boxes, detection_boxes, giou_threshold):
         max_values = np.max(giou_matrix, axis=0)
         max_indices = np.argmax(giou_matrix, axis=0)
         # 找到大于0.4的最大值的索引
-        print('_________________')
-        print(max_values)
-        print('#############')
-        print(max_indices)
         indices = np.where(max_values > giou_threshold)
 
         for index in indices[0]:

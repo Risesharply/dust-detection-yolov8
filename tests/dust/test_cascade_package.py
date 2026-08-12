@@ -2,13 +2,10 @@ import numpy as np
 import torch
 
 
-def test_proxy_package_import_has_no_path_side_effect():
-    import sys
+def test_legacy_proxy_package_is_not_part_of_public_api():
+    from pathlib import Path
 
-    before = list(sys.path)
-    import proxy_package  # noqa: F401
-
-    assert sys.path == before
+    assert not Path("proxy_package/__init__.py").exists()
 
 
 def test_cascade_crop_is_expanded_and_clipped():
