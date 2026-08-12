@@ -1,6 +1,6 @@
 import torch.nn as nn
-from configs.basic.build_layer import build_conv_layer, build_norm_layer, build_activation_layer, build_padding_layer
-from core.initialize import kaiming_init, constant_init
+from ..basic.build_layer import build_conv_layer, build_norm_layer, build_activation_layer, build_padding_layer
+from ...core.initialize import kaiming_init, constant_init
 import copy
 
 class ConvModule(nn.Module):

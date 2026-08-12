@@ -46,7 +46,7 @@ class BaseModule(nn.Module):
     def init_weights(self):
         """Initialize the weights."""
 
-        from core.initialize import initialize
+        from ...core.initialize import initialize
 
         if not self._is_init:
             if self.init_cfg:

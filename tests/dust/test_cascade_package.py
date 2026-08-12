@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 
 
 def test_proxy_package_import_has_no_path_side_effect():
@@ -23,3 +24,25 @@ def test_preprocess_produces_normalized_chw_tensor():
     tensor = preprocess_image(image)
     assert tuple(tensor.shape) == (1, 3, 224, 224)
     assert float(tensor.abs().max()) < 1e-6
+
+
+def test_explicit_model_preserves_checkpoint_parameter_layout():
+    from methods.yolo_efficientnetv2.model import EfficientNetV2ClassifierModel
+
+    state = EfficientNetV2ClassifierModel().state_dict()
+    assert len(state) == 782
+    assert "backbone.layers.0.conv.weight" in state
+    assert tuple(state["head.fc.weight"].shape) == (2, 1280)
+
+
+def test_classifier_returns_structured_prediction(tmp_path):
+    from methods.yolo_efficientnetv2.classifier import EfficientNetV2Classifier
+    from methods.yolo_efficientnetv2.model import EfficientNetV2ClassifierModel
+
+    checkpoint = tmp_path / "classifier.pth"
+    torch.save({"state_dict": EfficientNetV2ClassifierModel().state_dict()}, checkpoint)
+    classifier = EfficientNetV2Classifier(checkpoint, labels=("down", "other"), device="cpu")
+    result = classifier.classify(np.zeros((224, 224, 3), dtype=np.uint8))
+    assert result.label in {"down", "other"}
+    assert result.index in {0, 1}
+    assert 0.0 <= result.confidence <= 1.0
