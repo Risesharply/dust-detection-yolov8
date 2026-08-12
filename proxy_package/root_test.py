@@ -3,7 +3,7 @@
 import torch
 from proxy_package.utils.inference import inference_model, init_model
 from proxy_package.utils.train_utils import get_info, file2dict
-from models.build import BuildNet
+from proxy_package.models.build import BuildNet
 
 
 

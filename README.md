@@ -11,7 +11,7 @@ pip install -e .
 yolo detect predict model=v8_weights/best.pt source=path/to/video.mp4
 ```
 
-数据集、权重和训练输出不随仓库发布，放置约定见 [LOCAL_ASSETS.md](LOCAL_ASSETS.md)。算法与源码对应关系见 [docs/chapter-4-algorithm.md](docs/chapter-4-algorithm.md)，个人实验脚本分类见 [docs/script-inventory.md](docs/script-inventory.md)。当前目录尚未确认论文训练实际使用的唯一 YOLOv8 YAML，发布前不会用推测配置代替实验记录。
+数据集、权重和训练输出不随仓库发布，放置约定见 [LOCAL_ASSETS.md](LOCAL_ASSETS.md)。算法与源码对应关系见 [docs/chapter-4-algorithm.md](docs/chapter-4-algorithm.md)。当前个人示例位于 `examples/dust/`，旧快照位于 `archive/legacy/`，详细分类见 [docs/script-inventory.md](docs/script-inventory.md)。当前目录尚未确认论文训练实际使用的唯一 YOLOv8 YAML，发布前不会用推测配置代替实验记录。
 
 ## 来源与许可证
 

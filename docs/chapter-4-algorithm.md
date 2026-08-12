@@ -19,11 +19,10 @@
 | 多目标轨迹集合更新 | `refine/Tracker.py` |
 | 扬尘框时序筛选 | `refine/TSYDD.py` |
 | 设备/装载状态运动判断 | `refine/PPMove.py` |
-| Flask/视频流集成 | `flask_yolo.py`、`flask_yolo1.py` |
+| Flask/视频流集成 | `examples/dust/web/serve.py` |
 
 跟踪实现参考并改编自 `bochinski/iou-tracker`，加入 GIoU 匹配、适用于扬尘目标的轨迹状态判定以及 YOLO 检测张量筛选。版权与修改声明见 `NOTICE.md`。
 
 ## 对照实验边界
 
 YOLOv8 与 YOLOv5 版本共享算法核心，但保留各自的默认 `max_age`、输入接口和集成代码。为了忠实复现实验，不以其中一个目录覆盖另一个目录。
-

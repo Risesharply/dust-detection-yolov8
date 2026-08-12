@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 # Model settings
 model_cfg = dict(
     backbone=dict(type='EfficientNetV2', arch='s'),
@@ -52,7 +55,7 @@ data_cfg = dict(
         epoches = 100,
     ),
     test=dict(
-        ckpt = r'D:\pythonProject\ultralytics\proxy_package\models\efficientnetv2\Train_Epoch266-Loss0.046.pth',
+        ckpt=str(Path(__file__).with_name('Train_Epoch266-Loss0.046.pth')),
         metrics = ['accuracy', 'precision', 'recall', 'f1_score', 'confusion'],
         metric_options = dict(
             topk = (1,5),
