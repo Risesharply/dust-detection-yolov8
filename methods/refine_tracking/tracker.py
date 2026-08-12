@@ -1,7 +1,7 @@
 import numpy as np
 
 from .track import *
-from .iou_giou_matching import *
+from .matching import *
 '''
 Tracker类
 属性

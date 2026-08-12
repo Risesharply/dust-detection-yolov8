@@ -3,9 +3,9 @@
 TSYDD
 """
 import torch
-from .Tracker import Tracker
+from .tracker import Tracker
 
-class NDS:
+class RefinePostprocessor:
     def __init__(self, max_age=15, n_init=3):
 
         # tracker maintain a list contains(self.tracks) for each Track object
@@ -52,6 +52,9 @@ class NDS:
     def clear_tracker(self):
         print('tracker clear')
         self.tracker.clear()
+
+
+NDS = RefinePostprocessor
 
 
 

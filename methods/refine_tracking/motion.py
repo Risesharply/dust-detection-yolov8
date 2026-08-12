@@ -1,7 +1,7 @@
 
 
 import torch
-from .Tracker import Tracker
+from .tracker import Tracker
 
 class If_Move:
     def __init__(self, max_age=10, n_init=3):
