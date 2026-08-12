@@ -1,0 +1,12 @@
+detector: weights/yolo.pt
+classifier: weights/efficientnetv2.pth
+device: auto
+host: 0.0.0.0
+port: 5000
+streams:
+  - id: tracking_demo
+    source: rtsp://camera-host.example/live/stream1
+    mode: tracking
+  - id: cascade_demo
+    source: rtsp://camera-host.example/live/stream2
+    mode: cascade
