@@ -1,3 +1,26 @@
+# 基于 YOLOv8 与多目标跟踪的扬尘检测
+
+本仓库是论文第四章的 YOLOv8 对照实验工程，并保留 Ultralytics 上游历史。`refine/` 通过跨帧 IoU/GIoU 关联和轨迹状态对扬尘检测框进行时序筛选；YOLOv5 对照实验计划发布为 `dust-detection-yolov5`。
+
+## 快速开始
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -e .
+yolo detect predict model=v8_weights/best.pt source=path/to/video.mp4
+```
+
+数据集、权重和训练输出不随仓库发布，放置约定见 [LOCAL_ASSETS.md](LOCAL_ASSETS.md)。算法与源码对应关系见 [docs/chapter-4-algorithm.md](docs/chapter-4-algorithm.md)，个人实验脚本分类见 [docs/script-inventory.md](docs/script-inventory.md)。当前目录尚未确认论文训练实际使用的唯一 YOLOv8 YAML，发布前不会用推测配置代替实验记录。
+
+## 来源与许可证
+
+项目基于 [Ultralytics](https://github.com/ultralytics/ultralytics)，保留当前上游 GNU AGPL v3 许可证和 Git 历史。`refine/` 的跟踪实现参考并改编自 [bochinski/iou-tracker](https://github.com/bochinski/iou-tracker)；完整版权和修改说明见 [NOTICE.md](NOTICE.md)。
+
+---
+
+以下保留 Ultralytics 上游文档，便于查阅原框架用法。
+
 <div align="center">
   <p>
     <a href="https://ultralytics.com/yolov8" target="_blank">
