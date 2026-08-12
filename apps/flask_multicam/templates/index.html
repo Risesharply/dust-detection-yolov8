@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>扬尘检测</title></head>
+<body>
+  <h1>扬尘检测视频流</h1>
+  {% for stream_id in stream_ids %}<section><h2>{{ stream_id }}</h2><img src="{{ url_for('video_feed', stream_id=stream_id) }}" alt="{{ stream_id }}"></section>{% endfor %}
+</body>
+</html>
